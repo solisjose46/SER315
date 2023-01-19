@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-
-
 public abstract class User {
     public String name;
     public String username;

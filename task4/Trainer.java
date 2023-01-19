@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-
-
 public class Trainer extends Customer {
     public ArrayList<SportClass> sportClasses = new ArrayList<SportClass>();
 

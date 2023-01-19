@@ -1,6 +1,5 @@
 import java.lang.Integer;
 import java.util.ArrayList;
-import java.time.LocalDateTime;
 import java.util.Random;
 
 public class SportClass {
@@ -10,9 +9,11 @@ public class SportClass {
     public Trainer trainer;
     public Customer[] customers;
     public RoomReservation roomReservation;
+    public int classCapacity;
 
     SportClass(Sports sport, boolean isPrivate, int classID, int classCapacity, RoomReservation roomReservation, Trainer trainer) {
-        this.customers = new Customer[classCapacity];
+        this.classCapacity = classCapacity;
+        this.customers = new Customer[this.classCapacity];
         this.sport = sport;
         this.isPrivate = isPrivate;
         this.classID = classID;

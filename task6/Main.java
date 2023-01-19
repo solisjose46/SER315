@@ -1,7 +1,6 @@
 import java.lang.Integer;
 import java.util.ArrayList;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Random;
 
@@ -37,8 +36,6 @@ public class Main {
             System.out.println("Class is full");
             return;
         }
-        
-
         
         for (int i = 0; i < sportClass.customers.length; i++) {
             if (sportClass.customers[i] == null) {

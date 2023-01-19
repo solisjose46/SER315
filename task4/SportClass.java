@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-
-
 public class SportClass {
     public Sports sport;
     public boolean isPrivate;
@@ -11,9 +9,11 @@ public class SportClass {
     public Trainer trainer;
     public Customer[] customers;
     public RoomReservation roomReservation;
+    public int classCapacity;
 
-    SportClass(Sports sport, boolean isPrivae, int classID, int classCapacity, RoomReservation roomReservation, Trainer trainer) {
-        this.customers = new Customer[classCapacity];
+    SportClass(Sports sport, boolean isPrivate, int classID, int classCapacity, RoomReservation roomReservation, Trainer trainer) {
+        this.classCapacity = classCapacity;
+        this.customers = new Customer[this.classCapacity];
         this.sport = sport;
         this.isPrivate = isPrivate;
         this.classID = classID;

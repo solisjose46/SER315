@@ -9,9 +9,6 @@ public class Main {
     // Assuming 9 hour day 0800 - 1700
     public static final int ROOM_RESERVATION_MAX = 9;
 
-    // Collection of classes available
-    public static ArrayList<SportClass> catalog = new ArrayList<SportClass>();
-
     // Gym rooms
     public static Room[] rooms = new Room[] {
         new Room(RoomNames.Room1),
@@ -27,17 +24,19 @@ public class Main {
         if (sportClass.isCustomerInClass(customer)) {
             System.out.println("Already signed up.");
             return;
-        } 
+        }
+
+        if (customer.hours < sportClass.classDuration()) {
+            System.out.println("Lack of hours");
+            return;
+        }
         
         if (sportClass.isFull()) {
             System.out.println("Class is full");
             return;
         }
         
-        if (customer.hours < sportClass.classDuration()) {
-            System.out.println("Lack of hours");
-            return;
-        }
+
         
         for (int i = 0; i < sportClass.customers.length; i++) {
             if (sportClass.customers[i] == null) {
@@ -56,19 +55,43 @@ public class Main {
         System.out.println("Initializing gym...");
         Owner owner = new Owner("Owen", "OWilsonWow", "password123", "123456789");
         Trainer trainerJack = new Trainer("Jack", "JBlack", "password123", "123456789");
-        Customer jack = new Customer("Joe", "JSmith", "password123", "123456789");
+        Customer joe = new Customer("Joe", "JSmith", "password123", "123456789");
         Customer alice = new Customer("Alice", "AliceInWonderland", "password123", "123456789");
         Customer bob = new Customer("Bob", "BobTheBuilder", "password123", "123456789");
         Customer jon = new Customer("Jon", "JonSnow", "password123", "123456789");
 
+        // create demo start time and end time starting from 1000 to 1200 tomorrow utc
+        Date demoStartTime = new Date(1674122400);
+        Date demoEndTime = new Date(1674129600);
+
         int demoCapacity = 1;
-        int demoDuration = 2;
         int demoHoursSufficent = 3;
         int demoHoursInsufficent = 1;
-        // tomorrow at 1000 utc
-        Date demoDate = new Date(System.currentTimeMillis() + 86400000);
         
+        // allocate hours for demo
+        joe.hours = demoHoursSufficent;
+        alice.hours = demoHoursSufficent;
+        bob.hours = demoHoursSufficent;
+        jon.hours = demoHoursInsufficent;
+
+        int demoClassID = new Random().nextInt(1000);
+        
+        // create demo room reservation
+        RoomReservation demoRoomReservation = new RoomReservation(demoStartTime, demoEndTime, rooms[0], trainerJack);
+        // create demo sport class with Judo and demo room reservation
+        SportClass demoSportClass = new SportClass(Sports.Judo, false, demoClassID, demoCapacity, demoRoomReservation, trainerJack);
+
         System.out.println("!--------------------- Sequence demo ---------------------!");
 
+        // Successful register
+        classRegister(joe, demoSportClass);
+        // Already signed up
+        classRegister(joe, demoSportClass);
+        // Lack of hours
+        classRegister(jon, demoSportClass);
+        // Class is full
+        classRegister(alice, demoSportClass);
+
+        System.out.println("!--------------------- End of sequence demo ---------------------!");
     }
 }

@@ -19,7 +19,7 @@ public class RoomReservation {
     }
 
     public String printRoomReservation() {
-        String date = this.time.toString();
+        String date = this.startTime.toString();
         String reservationCount = this.printReservationCount();
 
         return "Room: " + this.room.roomName + " Date: " + date + " Trainer: " + this.trainer.name + " Duration: " + reservationCount + " hours.";

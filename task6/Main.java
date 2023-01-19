@@ -67,6 +67,7 @@ public class Main {
         int demoHoursInsufficent = 1;
         // tomorrow at 1000 utc
         Date demoDate = new Date(System.currentTimeMillis() + 86400000);
+        
         System.out.println("!--------------------- Sequence demo ---------------------!");
 
     }

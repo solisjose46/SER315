@@ -1,6 +1,8 @@
 import java.lang.Integer;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Random;
 
 public class Main {
@@ -60,9 +62,9 @@ public class Main {
         Customer bob = new Customer("Bob", "BobTheBuilder", "password123", "123456789");
         Customer jon = new Customer("Jon", "JonSnow", "password123", "123456789");
 
-        // create demo start time and end time starting from 1000 to 1200 tomorrow utc
-        Date demoStartTime = new Date(1674122400);
-        Date demoEndTime = new Date(1674129600);
+        // create demo start time and end time starting from 1000 to 1200 tomorrow
+        LocalDateTime demoStartTime = LocalDateTime.of(2023, Month.JANUARY, 19, 10, 0);
+        LocalDateTime demoEndTime = LocalDateTime.of(2023, Month.JANUARY, 19, 12, 0);
 
         int demoCapacity = 1;
         int demoHoursSufficent = 3;
